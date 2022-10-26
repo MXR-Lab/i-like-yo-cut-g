@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class cutFrameworkV2 : MonoBehaviour
 {
-    public knifeCollisions kC;
 
     [SerializeField] public GameObject g1;
     [SerializeField] public GameObject g2;
+    [SerializeField] public GameObject g3;
+
     [SerializeField] private Transform cutSlice;
     public bool crossGate1 = false;
     public bool crossGate2 = false;
     public bool crossGate3 = false;
+
+    public knifeCollisions kC;
 
     public void Update()
     {
