@@ -16,8 +16,8 @@ namespace BNG {
         public bool HapticsOnGrab = true;
 
         public float VibrateFrequency = 0.3f;
-        public float VibrateAmplitude = 0.1f;
-        public float VibrateDuration = 0.1f;
+        public float VibrateAmplitude = 0.5f;
+        public float VibrateDuration = 0.2f;
 
         Grabber currentGrabber;
 
