@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BNG;
 
 public class cutFrameworkV3 : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class cutFrameworkV3 : MonoBehaviour
     public void gatePassed(int gateIndex)
     {
         Debug.Log(gateIndex);
-        if(gateIndex > 0)
+        if (gateIndex > 0)
         {
             if (!crossGates[gateIndex - 1])
             {
@@ -29,7 +30,7 @@ public class cutFrameworkV3 : MonoBehaviour
         }
         crossGates[gateIndex] = true;
         if (checkComplete())
-           instantiateCut();
+            instantiateCut();
 
 
     }
@@ -37,7 +38,7 @@ public class cutFrameworkV3 : MonoBehaviour
     public bool checkComplete()
     {
         bool complete = true;
-        for(int i = 0; i < crossGates.Length; i++)
+        for (int i = 0; i < crossGates.Length; i++)
         {
             if (!crossGates[i])
                 complete = false;
@@ -47,9 +48,14 @@ public class cutFrameworkV3 : MonoBehaviour
 
     private void instantiateCut()
     {
-        Destroy(gameObject);
-        Instantiate(cutSlice, transform.position, transform.rotation);
+        //Instantiate(cutSlice, transform.position, transform.rotation);
         Debug.Log("Split");
+        //Destroy(gameObject);
+        var mc = gameObject.AddComponent<MeshCollider>();
+        mc.convex = true;
+        gameObject.AddComponent<Rigidbody>();
+        gameObject.AddComponent<Grabbable>();
+        Destroy(gameObject.transform.GetChild(0).gameObject);
     }
 
     public void Restart()
