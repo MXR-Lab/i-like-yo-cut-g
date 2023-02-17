@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class knifeCollisionV2 : MonoBehaviour
 {
-    public cutFrameworkV3 cutFramework;
+    private cutManager cutManager;
+
+    void Start()
+    {
+        if (GameObject.Find("CutManager") && !(GameObject.Find("CutManager").GetComponent<cutManager>() == null))
+        {
+            cutManager = GameObject.Find("CutManager").GetComponent<cutManager>();
+        }
+        else
+        {
+            Debug.Log("CutManager not found!");
+        }
+    }
 
     void OnTriggerEnter(Collider collision)
     {
@@ -13,13 +25,12 @@ public class knifeCollisionV2 : MonoBehaviour
             if(collision.CompareTag("Gate"))
             {
                 gateInfo gate = collision.gameObject.GetComponent<gateInfo>();
-                cutFramework.gatePassed(gate.getGateIndex());
+                cutManager.getCut().gatePassed(gate.getGateIndex());
             }
             
             if(collision.CompareTag("Border"))
             {
-                Debug.Log("hit border");
-                cutFramework.Restart();
+                cutManager.getCut().Restart("hit border");
             }
         }
     }
@@ -30,8 +41,7 @@ public class knifeCollisionV2 : MonoBehaviour
         {
             if (other.CompareTag("Carcass"))
             {
-                Debug.Log("Left carcass");
-                cutFramework.Restart();
+                cutManager.getCut().Restart("Left carcass");
             }
         }
     }

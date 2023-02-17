@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class cutFrameworkV3 : MonoBehaviour
 {
-    private bool[] crossGates = new bool[2];
-    [SerializeField] private GameObject cutSlice;
+    private bool[] crossGates;
+    private cutManager cutManager;
+    //[SerializeField] private GameObject cutSlice;
 
     void Start()
     {
-        Debug.Log("Starting!!");
-        crossGates = new bool[2]; // dynamically get number of gates next time, okay?
-        for (int i = 0; i < crossGates.Length; i++)
-            crossGates[i] = false;
+        if (GameObject.Find("CutManager") && !(GameObject.Find("CutManager").GetComponent<cutManager>() == null))
+        {
+            cutManager = GameObject.Find("CutManager").GetComponent<cutManager>();
+            int numGates = 0;
+            Transform[] allChildren = this.transform.GetComponentsInChildren<Transform>();
+            for (int i = 0; i < allChildren.Length; i++)
+            {
+                if (allChildren[i].tag == "Gate")
+                    numGates++;
+            }
+            crossGates = new bool[numGates];
+            for (int i = 0; i < crossGates.Length; i++)
+                crossGates[i] = false;
+
+            Debug.Log("Starting");
+            
+        }
+        else
+        {
+            Debug.Log("CutManager not found!");
+        }  
     }
 
     public void gatePassed(int gateIndex)
@@ -22,16 +40,16 @@ public class cutFrameworkV3 : MonoBehaviour
         {
             if (!crossGates[gateIndex - 1])
             {
-                Debug.Log("Skipped a gate");
-                Restart();
+                Restart("Skipped a gate");
                 return;
             }
         }
         crossGates[gateIndex] = true;
         if (checkComplete())
-           instantiateCut();
-
-
+        {
+            instantiateCut();
+            cutManager.nextCut();
+        }
     }
 
     public bool checkComplete()
@@ -48,16 +66,17 @@ public class cutFrameworkV3 : MonoBehaviour
     private void instantiateCut()
     {
         Destroy(gameObject);
-        Instantiate(cutSlice, transform.position, transform.rotation);
+        //Instantiate(cutSlice, transform.position, transform.rotation);
         Debug.Log("Split");
     }
 
-    public void Restart()
+    public void Restart(string reason)
     {
         for (int i = 0; i < crossGates.Length; i++)
         {
             crossGates[i] = false;
         }
+        Debug.Log(reason);
         Debug.Log("Try again");
     }
 }
