@@ -13,7 +13,7 @@ public class cutManager : MonoBehaviour
         if (cuts.Length > 0)
         {
             currentCutNum = 0;
-            cuts[currentCutNum].SetActive(true);
+            cuts[currentCutNum].gameObject.transform.GetChild(0).gameObject.SetActive(true);
             currentCut = cuts[0].GetComponent<cutFrameworkV3>();
         }
         else
@@ -32,12 +32,12 @@ public class cutManager : MonoBehaviour
         currentCutNum++;
         if (currentCutNum < cuts.Length)
         {
-            cuts[currentCutNum].SetActive(true);
+            cuts[currentCutNum].gameObject.transform.GetChild(0).gameObject.SetActive(true);
             currentCut = cuts[0].GetComponent<cutFrameworkV3>();
         }
         else
         {
-            Debug.Log("All cute complete");
+            Debug.Log("All cuts complete");
         }
     }
 }

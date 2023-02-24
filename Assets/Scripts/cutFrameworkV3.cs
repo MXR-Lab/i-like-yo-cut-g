@@ -7,7 +7,7 @@ public class cutFrameworkV3 : MonoBehaviour
 {
     private bool[] crossGates;
     private cutManager cutManager;
-    //[SerializeField] private GameObject cutSlice;
+    //[SerializeField] private GameObject newCut;
 
     void Start()
     {
@@ -32,6 +32,7 @@ public class cutFrameworkV3 : MonoBehaviour
         {
             Debug.Log("CutManager not found!");
         }  
+
     }
 
     public void gatePassed(int gateIndex)
@@ -75,7 +76,7 @@ public class cutFrameworkV3 : MonoBehaviour
         gameObject.AddComponent<Rigidbody>();
         gameObject.AddComponent<Grabbable>();
         Destroy(gameObject.transform.GetChild(0).gameObject);
-        newCut.transform.GetChild(0).gameObject.SetActive(true);
+        //newCut.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void Restart(string reason)
