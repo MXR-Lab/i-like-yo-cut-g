@@ -5,7 +5,7 @@ using BNG;
 
 public class cutFrameworkV3 : MonoBehaviour
 {
-    private bool[] crossGates;
+    private bool[] crossGates = new bool[1];
     private cutManager cutManager;
     //[SerializeField] private GameObject cutSlice;
 

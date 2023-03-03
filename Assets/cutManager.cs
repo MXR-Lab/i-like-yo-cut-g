@@ -7,6 +7,8 @@ public class cutManager : MonoBehaviour
     [SerializeField] private GameObject[] cuts;
     private int currentCutNum;
     private cutFrameworkV3 currentCut;
+    private Collider cutLine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +17,14 @@ public class cutManager : MonoBehaviour
             currentCutNum = 0;
             cuts[currentCutNum].SetActive(true);
             currentCut = cuts[0].GetComponent<cutFrameworkV3>();
+            currentCut.Restart("test");
+            Transform[] allChildren = cuts[0].transform.GetComponentsInChildren<Transform>();
+            for (int i = 0; i < allChildren.Length; i++)
+            {
+
+                if (allChildren[i].tag == "BestCut")
+                    cutLine = allChildren[i].GetComponent<Collider>();
+            }
         }
         else
         {
@@ -33,11 +43,24 @@ public class cutManager : MonoBehaviour
         if (currentCutNum < cuts.Length)
         {
             cuts[currentCutNum].SetActive(true);
-            currentCut = cuts[0].GetComponent<cutFrameworkV3>();
+            currentCut = cuts[currentCutNum].GetComponent<cutFrameworkV3>();
+
+
+            Transform[] allChildren = cuts[currentCutNum].transform.GetComponentsInChildren<Transform>();
+            for (int i = 0; i < allChildren.Length; i++)
+            {
+                if (allChildren[i].tag == "BestCut")
+                    cutLine = allChildren[i].GetComponent<Collider>();
+            }
         }
         else
         {
-            Debug.Log("All cute complete");
+            Debug.Log("All cuts complete");
         }
+    }
+
+    public Collider getCutLine()
+    {
+        return cutLine;
     }
 }
