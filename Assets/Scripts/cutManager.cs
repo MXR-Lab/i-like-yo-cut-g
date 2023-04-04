@@ -13,8 +13,7 @@ public class cutManager : MonoBehaviour
         if (cuts.Length > 0)
         {
             currentCutNum = 0;
-            cuts[currentCutNum].gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            currentCut = cuts[0].GetComponent<cutFrameworkV3>();
+            
         }
         else
         {
