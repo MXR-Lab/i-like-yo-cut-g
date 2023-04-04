@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class knifeCollisionV2 : MonoBehaviour
 {
     private cutManager cutManager;
     private bool cutting = false;
     public GameObject cutPoint;
+    public TMP_Text text;
 
     void Start()
     {
@@ -24,13 +26,16 @@ public class knifeCollisionV2 : MonoBehaviour
     {
         if(cutting)
         {
-            if (cutManager.getCutLine() != null)
+            if (cutManager.getCutLine() != null && cutManager.getCut().startedCutting())
             {
                 Vector3 point = Physics.ClosestPoint(cutPoint.transform.position, cutManager.getCutLine(), cutManager.getCutLine().transform.position, cutManager.getCutLine().transform.rotation);
                 point = point - cutPoint.transform.position;
 
-                //Debug.Log("x: " + point.x + " y: " + point.y + " z: " + point.z);
-                Debug.Log(Mathf.Sqrt(Mathf.Pow(point.x, 2) + Mathf.Pow(point.x, 2)) * 1000);
+                text.text = ("Error: " + Mathf.Sqrt(Mathf.Pow(point.x, 2) + Mathf.Pow(point.x, 2)) * 1000);
+                //Debug.Log(Mathf.Sqrt(Mathf.Pow(point.x, 2) + Mathf.Pow(point.x, 2)) * 1000);
+            }
+            else
+            {
             }
         }
     }

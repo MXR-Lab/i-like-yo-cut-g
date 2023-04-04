@@ -86,4 +86,9 @@ public class cutFrameworkV3 : MonoBehaviour
         Debug.Log(reason);
         Debug.Log("Try again");
     }
+
+    public bool startedCutting()
+    {
+        return crossGates[0];
+    }
 }
