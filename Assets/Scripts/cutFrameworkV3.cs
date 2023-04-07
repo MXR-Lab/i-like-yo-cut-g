@@ -7,6 +7,7 @@ public class cutFrameworkV3 : MonoBehaviour
 {
     private bool[] crossGates = new bool[1];
     private cutManager cutManager;
+    private float sumError;
     //[SerializeField] private GameObject newCut;
 
     void Start()
@@ -50,8 +51,19 @@ public class cutFrameworkV3 : MonoBehaviour
         if (checkComplete())
         {
             instantiateCut();
+            cutManager.recordCut(name, sumError/crossGates.Length);
             cutManager.nextCut();
         }
+    }
+
+    public void errorPoint(float distance)
+    {
+        sumError += distance;
+    }
+
+    public float getAvgError()
+    {
+        return sumError / crossGates.Length;
     }
 
     public bool checkComplete()

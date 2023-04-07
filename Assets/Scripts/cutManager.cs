@@ -8,10 +8,13 @@ public class cutManager : MonoBehaviour
     private int currentCutNum;
     private cutFrameworkV3 currentCut;
     private Collider cutLine;
+    private List<CutRecord> finishedCuts;
+    private bool isTest;
 
     // Start is called before the first frame update
     void Start()
     {
+        finishedCuts = new List<CutRecord>();
         if (cuts.Length > 0)
         {
             currentCutNum = 0;
@@ -30,6 +33,29 @@ public class cutManager : MonoBehaviour
         {
             Debug.Log("No cuts found!");
         }
+    }
+
+    public void recordCut(string name, float error)
+    {
+        foreach(CutRecord cutRec in finishedCuts)
+        {
+            if (cutRec.getName().Equals(name))
+            {
+                if (isTest)
+                    cutRec.addTestError(error);
+                else
+                    cutRec.addTeachError(error);
+
+                return;
+            }
+        }
+
+        CutRecord newCut = new CutRecord(name);
+        if (isTest)
+            newCut.addTestError(error);
+        else
+            newCut.addTeachError(error);
+        finishedCuts.Add(newCut);
     }
 
     public cutFrameworkV3 getCut()
@@ -62,5 +88,17 @@ public class cutManager : MonoBehaviour
     public Collider getCutLine()
     {
         return cutLine;
+    }
+
+    public void setTest()
+    {
+        isTest = true;
+        //Set all renderers for outlines to false
+    }
+
+    public void setTeach()
+    {
+        isTest = false;
+        //Set all renderers for outlines to true
     }
 }
