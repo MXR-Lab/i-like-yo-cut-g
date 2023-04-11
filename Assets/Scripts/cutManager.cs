@@ -10,10 +10,17 @@ public class cutManager : MonoBehaviour
     private Collider cutLine;
     private List<CutRecord> finishedCuts;
     private bool isTest;
+    private bool showResults;
+
+    public GameObject testCow;
+    public GameObject teachCow;
+    public GameObject resultsMenu;
 
     // Start is called before the first frame update
     void Start()
     {
+        isTest = false;
+        showResults = false;
         finishedCuts = new List<CutRecord>();
         if (cuts.Length > 0)
         {
@@ -90,15 +97,16 @@ public class cutManager : MonoBehaviour
         return cutLine;
     }
 
-    public void setTest()
+    public void toggleTest()
     {
-        isTest = true;
-        //Set all renderers for outlines to false
+        isTest = !isTest;
+        testCow.SetActive(isTest);
+        teachCow.SetActive(!isTest);
     }
 
-    public void setTeach()
+    public void toggleResults()
     {
-        isTest = false;
-        //Set all renderers for outlines to true
+        showResults = !showResults;
+        resultsMenu.SetActive(showResults);
     }
 }

@@ -52,7 +52,7 @@ public class cutFrameworkV3 : MonoBehaviour
         {
             instantiateCut();
             cutManager.recordCut(name, sumError/crossGates.Length);
-            cutManager.nextCut();
+            //cutManager.nextCut();
         }
     }
 
@@ -93,6 +93,7 @@ public class cutFrameworkV3 : MonoBehaviour
 
     public void Restart(string reason)
     {
+        sumError = 0;
         for (int i = 0; i < crossGates.Length; i++)
         {
             crossGates[i] = false;
