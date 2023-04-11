@@ -16,6 +16,18 @@ public class cutManager : MonoBehaviour
     public GameObject teachCow;
     public GameObject resultsMenu;
 
+    public GameObject testRound;
+    public GameObject teachRound;
+
+    public GameObject testLoin;
+    public GameObject teachLoin;
+
+    public GameObject testRib;
+    public GameObject teachRib;
+
+    public GameObject testChuck;
+    public GameObject teachChuck;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -108,5 +120,65 @@ public class cutManager : MonoBehaviour
     {
         showResults = !showResults;
         resultsMenu.SetActive(showResults);
+    }
+
+    public void enableRound()
+    {
+        testRound.SetActive(isTest);
+        teachRound.SetActive(!isTest);
+
+        testRib.SetActive(false);
+        teachRib.SetActive(false);
+
+        testLoin.SetActive(false);
+        teachLoin.SetActive(false);
+
+        testChuck.SetActive(false);
+        teachChuck.SetActive(false);
+    }
+
+    public void enableLoin()
+    {
+        testRound.SetActive(false);
+        teachRound.SetActive(false);
+
+        testRib.SetActive(false);
+        teachRib.SetActive(false);
+
+        testLoin.SetActive(isTest);
+        teachLoin.SetActive(!isTest);
+
+        testChuck.SetActive(false);
+        teachChuck.SetActive(false);
+    }
+
+    public void enableRib()
+    {
+        testRound.SetActive(false);
+        teachRound.SetActive(false);
+
+        testRib.SetActive(isTest);
+        teachRib.SetActive(isTest);
+
+        testLoin.SetActive(false);
+        teachLoin.SetActive(false);
+
+        testChuck.SetActive(false);
+        teachChuck.SetActive(false);
+    }
+
+    public void enableChuck()
+    {
+        testRound.SetActive(false);
+        teachRound.SetActive(false);
+
+        testRib.SetActive(false);
+        teachRib.SetActive(false);
+
+        testLoin.SetActive(false);
+        teachLoin.SetActive(false);
+
+        testChuck.SetActive(isTest);
+        teachChuck.SetActive(!isTest);
     }
 }
