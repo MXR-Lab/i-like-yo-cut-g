@@ -45,6 +45,10 @@ public class knifeCollisionV2 : MonoBehaviour
             {
                 gateInfo gate = collision.gameObject.GetComponent<gateInfo>();
                 cutManager.getCut().gatePassed(gate.getGateIndex());
+
+                Vector3 point = Physics.ClosestPoint(cutPoint.transform.position, cutManager.getCutLine(), cutManager.getCutLine().transform.position, cutManager.getCutLine().transform.rotation);
+                point = point - cutPoint.transform.position;
+                cutManager.getCut().errorPoint(Mathf.Sqrt(Mathf.Pow(point.x, 2) + Mathf.Pow(point.x, 2)) * 1000);
             }
             
             if(collision.CompareTag("Border"))
