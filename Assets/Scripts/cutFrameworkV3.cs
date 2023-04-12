@@ -8,6 +8,7 @@ public class cutFrameworkV3 : MonoBehaviour
     private bool[] crossGates = new bool[1];
     private cutManager cutManager;
     private float sumError;
+    public string name;
     //[SerializeField] private GameObject newCut;
 
     void Start()

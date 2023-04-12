@@ -28,6 +28,8 @@ public class cutManager : MonoBehaviour
     public GameObject testChuck;
     public GameObject teachChuck;
 
+    public DisplayError errorController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +77,7 @@ public class cutManager : MonoBehaviour
         else
             newCut.addTeachError(error);
         finishedCuts.Add(newCut);
+        errorController.updateResultsDisplay(finishedCuts);
     }
 
     public cutFrameworkV3 getCut()
