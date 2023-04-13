@@ -889,11 +889,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 560019311}
         m_TargetAssemblyTypeName: cutManager, Assembly-CSharp
-        m_MethodName: enableChuck
-        m_Mode: 1
+        m_MethodName: enableCut
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 4070861576784444968, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1446,81 +1447,6 @@ Transform:
   m_Father: {fileID: 871374736}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &458503810
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1983196658}
-    m_Modifications:
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.188
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.498
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4070861576784444968, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-        type: 3}
-      propertyPath: m_Name
-      value: ChuckCut
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: abb5480bc177f1d4f9e0aa39d7c89a68, type: 3}
---- !u!4 &458503811 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3689938644907697298, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-    type: 3}
-  m_PrefabInstance: {fileID: 458503810}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &505267682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,12 +1552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultsMenu: {fileID: 2104737600}
-  chuckBody: {fileID: 4070861576784444968, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
-    type: 3}
-  ribBody: {fileID: 1305541158418061195, guid: 74e8301c0e5973844abc2c73f788d014, type: 3}
-  flankBody: {fileID: 5662771052909533065, guid: 61423d7176399134dbe6fe79dff2e83b,
-    type: 3}
-  cow: {fileID: 1983196657}
+  cowContainer: {fileID: 1983196657}
   errorController: {fileID: 1945324216}
 --- !u!4 &560019312
 Transform:
@@ -2445,11 +2366,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 560019311}
         m_TargetAssemblyTypeName: cutManager, Assembly-CSharp
-        m_MethodName: enableRib
-        m_Mode: 1
+        m_MethodName: enableCut
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1305541158418061195, guid: 74e8301c0e5973844abc2c73f788d014,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2676,11 +2598,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 560019311}
         m_TargetAssemblyTypeName: cutManager, Assembly-CSharp
-        m_MethodName: enableFlank
-        m_Mode: 1
+        m_MethodName: enableCut
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 5662771052909533065, guid: 61423d7176399134dbe6fe79dff2e83b,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3552,7 +3475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1983196658}
   m_Layer: 0
-  m_Name: Cow
+  m_Name: CowContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3569,8 +3492,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 458503811}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

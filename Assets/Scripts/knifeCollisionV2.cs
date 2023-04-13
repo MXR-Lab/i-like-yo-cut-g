@@ -11,13 +11,9 @@ public class knifeCollisionV2 : MonoBehaviour
     void Start()
     {
         if (GameObject.Find("CutManager") && !(GameObject.Find("CutManager").GetComponent<cutManager>() == null))
-        {
             cutManager = GameObject.Find("CutManager").GetComponent<cutManager>();
-        }
         else
-        {
             Debug.Log("CutManager not found!");
-        }
     }
 
     private void Update()

@@ -9,14 +9,8 @@ public class cutManager : MonoBehaviour
     private List<CutRecord> finishedCuts;
     private bool isTest;
     private bool showResults;
-
     public GameObject resultsMenu;
-
-    public GameObject chuckBody;
-    public GameObject ribBody;
-    public GameObject flankBody;
-    public GameObject cow;
-
+    public GameObject cowContainer;
     public DisplayError errorController;
 
     // Start is called before the first frame update
@@ -38,6 +32,7 @@ public class cutManager : MonoBehaviour
                 else
                     cutRec.addTeachError(error);
 
+                errorController.updateResultsDisplay(finishedCuts);
                 return;
             }
         }
@@ -75,6 +70,11 @@ public class cutManager : MonoBehaviour
     public void toggleTest()
     {
         isTest = !isTest;
+        toggleGuide();
+    }
+
+    private void toggleGuide()
+    {
         GameObject[] guides = GameObject.FindGameObjectsWithTag("Guide");
         foreach (GameObject guide in guides)
         {
@@ -89,39 +89,11 @@ public class cutManager : MonoBehaviour
         resultsMenu.SetActive(showResults);
     }
 
-    public void enableFlank()
+    public void enableCut(GameObject cutPrefabe)
     {
-        GameObject.Destroy(cow.transform.GetChild(0).gameObject);
-        Instantiate(flankBody, cow.transform);
-        GameObject[] guides = GameObject.FindGameObjectsWithTag("Guide");
-        foreach (GameObject guide in guides)
-        {
-            MeshRenderer renderer = guide.GetComponent<MeshRenderer>();
-            renderer.enabled = !isTest;
-        }
-    }
-
-    public void enableRib()
-    {
-        GameObject.Destroy(cow.transform.GetChild(0).gameObject);
-        Instantiate(ribBody, cow.transform);
-        GameObject[] guides = GameObject.FindGameObjectsWithTag("Guide");
-        foreach (GameObject guide in guides)
-        {
-            MeshRenderer renderer = guide.GetComponent<MeshRenderer>();
-            renderer.enabled = !isTest;
-        }
-    }
-
-    public void enableChuck()
-    {
-        GameObject.Destroy(cow.transform.GetChild(0).gameObject);
-        Instantiate(chuckBody, cow.transform);
-        GameObject[] guides = GameObject.FindGameObjectsWithTag("Guide");
-        foreach (GameObject guide in guides)
-        {
-            MeshRenderer renderer = guide.GetComponent<MeshRenderer>();
-            renderer.enabled = !isTest;
-        }
+        if (cowContainer.transform.childCount != 0)
+            GameObject.Destroy(cowContainer.transform.GetChild(0).gameObject);
+        Instantiate(cutPrefabe, cowContainer.transform);
+        toggleGuide();
     }
 }

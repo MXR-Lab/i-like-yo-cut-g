@@ -45,6 +45,7 @@ public class cutFrameworkV3 : MonoBehaviour
         {
             cutManager.recordCut(cutName, getAvgError());
             instantiateCut();
+            Destroy(this.gameObject);
         }
     }
 
