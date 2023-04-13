@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 5356751592841853556}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.22, y: 3.19}
-  m_SizeDelta: {x: 345.89, y: 43.63}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 6.2573, y: 0}
+  m_SizeDelta: {x: 347.4855, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5356751592701166649
 CanvasRenderer:
@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Ribs 1 :
 
-    Teach Error: 10.2 | Test Error 11.5'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -171,6 +171,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 360.27, y: 87.78}
+  m_AnchoredPosition: {x: -0.508728, y: 33.90091}
+  m_SizeDelta: {x: 359.2526, y: 19.9781}
   m_Pivot: {x: 0.5, y: 0.5}
