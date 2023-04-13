@@ -12,8 +12,6 @@ public class cutManager : MonoBehaviour
     private bool isTest;
     private bool showResults;
 
-    public GameObject testCow;
-    public GameObject teachCow;
     public GameObject resultsMenu;
 
     public GameObject testRound;
@@ -115,8 +113,12 @@ public class cutManager : MonoBehaviour
     public void toggleTest()
     {
         isTest = !isTest;
-        testCow.SetActive(isTest);
-        teachCow.SetActive(!isTest);
+        GameObject[] guides = GameObject.FindGameObjectsWithTag("Guide");
+        foreach (GameObject guide in guides)
+        {
+            MeshRenderer renderer = guide.GetComponent<MeshRenderer>();
+            renderer.enabled = !isTest;
+        }
     }
 
     public void toggleResults()

@@ -1558,8 +1558,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cuts:
   - {fileID: 427730409}
-  testCow: {fileID: 0}
-  teachCow: {fileID: 0}
   resultsMenu: {fileID: 0}
   testRound: {fileID: 0}
   teachRound: {fileID: 0}
@@ -1669,7 +1667,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 560019311}
         m_TargetAssemblyTypeName: cutManager, Assembly-CSharp
         m_MethodName: toggleTest
         m_Mode: 1
@@ -2062,7 +2060,7 @@ PrefabInstance:
     - target: {fileID: 4070861576784444968, guid: abb5480bc177f1d4f9e0aa39d7c89a68,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abb5480bc177f1d4f9e0aa39d7c89a68, type: 3}
@@ -3760,7 +3758,7 @@ PrefabInstance:
     - target: {fileID: 1305541158418061195, guid: 74e8301c0e5973844abc2c73f788d014,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1825618561030769969, guid: 74e8301c0e5973844abc2c73f788d014,
         type: 3}

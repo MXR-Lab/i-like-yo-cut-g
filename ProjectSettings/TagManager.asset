@@ -8,6 +8,7 @@ TagManager:
   - Border
   - Carcass
   - BestCut
+  - Guide
   layers:
   - Default
   - TransparentFX
