@@ -721,8 +721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae6db0d78c015d24fbd7cbab7355716d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutName: 
-  cutPart: {fileID: 0}
+  cutName: Chuck
+  cutPart: {fileID: 5547000125121528}
 --- !u!1 &1325164223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,7 +1795,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4070861576784444968}
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -0.568, y: 1.498, z: -3.5670881}
+  m_LocalPosition: {x: -0.188, y: 1.498, z: -3.5}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:

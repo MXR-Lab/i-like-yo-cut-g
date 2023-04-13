@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class cutManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] cuts;
-    private int currentCutNum;
     private cutFrameworkV3 currentCut;
     private Collider cutLine;
     private List<CutRecord> finishedCuts;
@@ -14,17 +12,10 @@ public class cutManager : MonoBehaviour
 
     public GameObject resultsMenu;
 
-    public GameObject testRound;
-    public GameObject teachRound;
-
-    public GameObject testLoin;
-    public GameObject teachLoin;
-
-    public GameObject testRib;
-    public GameObject teachRib;
-
-    public GameObject testChuck;
-    public GameObject teachChuck;
+    public GameObject chuckBody;
+    public GameObject ribBody;
+    public GameObject flankBody;
+    public GameObject cow;
 
     public DisplayError errorController;
 
@@ -34,24 +25,6 @@ public class cutManager : MonoBehaviour
         isTest = false;
         showResults = false;
         finishedCuts = new List<CutRecord>();
-        if (cuts.Length > 0)
-        {
-            currentCutNum = 0;
-            cuts[currentCutNum].SetActive(true);
-            currentCut = cuts[0].GetComponent<cutFrameworkV3>();
-            currentCut.Restart("test");
-            Transform[] allChildren = cuts[0].transform.GetComponentsInChildren<Transform>();
-            for (int i = 0; i < allChildren.Length; i++)
-            {
-
-                if (allChildren[i].tag == "BestCut")
-                    cutLine = allChildren[i].GetComponent<Collider>();
-            }
-        }
-        else
-        {
-            Debug.Log("No cuts found!");
-        }
     }
 
     public void recordCut(string name, float error)
@@ -83,25 +56,14 @@ public class cutManager : MonoBehaviour
         return currentCut;
     }
 
-    public void nextCut()
+    public void setCut(GameObject newCut)
     {
-        currentCutNum++;
-        if (currentCutNum < cuts.Length)
+        currentCut = newCut.GetComponent<cutFrameworkV3>();
+        Transform[] allChildren = newCut.transform.GetComponentsInChildren<Transform>();
+        for (int i = 0; i < allChildren.Length; i++)
         {
-            cuts[currentCutNum].SetActive(true);
-            currentCut = cuts[currentCutNum].GetComponent<cutFrameworkV3>();
-
-
-            Transform[] allChildren = cuts[currentCutNum].transform.GetComponentsInChildren<Transform>();
-            for (int i = 0; i < allChildren.Length; i++)
-            {
-                if (allChildren[i].tag == "BestCut")
-                    cutLine = allChildren[i].GetComponent<Collider>();
-            }
-        }
-        else
-        {
-            Debug.Log("All cuts complete");
+            if (allChildren[i].tag == "BestCut")
+                cutLine = allChildren[i].GetComponent<Collider>();
         }
     }
 
@@ -127,63 +89,39 @@ public class cutManager : MonoBehaviour
         resultsMenu.SetActive(showResults);
     }
 
-    public void enableRound()
+    public void enableFlank()
     {
-        testRound.SetActive(isTest);
-        teachRound.SetActive(!isTest);
-
-        testRib.SetActive(false);
-        teachRib.SetActive(false);
-
-        testLoin.SetActive(false);
-        teachLoin.SetActive(false);
-
-        testChuck.SetActive(false);
-        teachChuck.SetActive(false);
-    }
-
-    public void enableLoin()
-    {
-        testRound.SetActive(false);
-        teachRound.SetActive(false);
-
-        testRib.SetActive(false);
-        teachRib.SetActive(false);
-
-        testLoin.SetActive(isTest);
-        teachLoin.SetActive(!isTest);
-
-        testChuck.SetActive(false);
-        teachChuck.SetActive(false);
+        GameObject.Destroy(cow.transform.GetChild(0).gameObject);
+        Instantiate(flankBody, cow.transform);
+        GameObject[] guides = GameObject.FindGameObjectsWithTag("Guide");
+        foreach (GameObject guide in guides)
+        {
+            MeshRenderer renderer = guide.GetComponent<MeshRenderer>();
+            renderer.enabled = !isTest;
+        }
     }
 
     public void enableRib()
     {
-        testRound.SetActive(false);
-        teachRound.SetActive(false);
-
-        testRib.SetActive(isTest);
-        teachRib.SetActive(isTest);
-
-        testLoin.SetActive(false);
-        teachLoin.SetActive(false);
-
-        testChuck.SetActive(false);
-        teachChuck.SetActive(false);
+        GameObject.Destroy(cow.transform.GetChild(0).gameObject);
+        Instantiate(ribBody, cow.transform);
+        GameObject[] guides = GameObject.FindGameObjectsWithTag("Guide");
+        foreach (GameObject guide in guides)
+        {
+            MeshRenderer renderer = guide.GetComponent<MeshRenderer>();
+            renderer.enabled = !isTest;
+        }
     }
 
     public void enableChuck()
     {
-        testRound.SetActive(false);
-        teachRound.SetActive(false);
-
-        testRib.SetActive(false);
-        teachRib.SetActive(false);
-
-        testLoin.SetActive(false);
-        teachLoin.SetActive(false);
-
-        testChuck.SetActive(isTest);
-        teachChuck.SetActive(!isTest);
+        GameObject.Destroy(cow.transform.GetChild(0).gameObject);
+        Instantiate(chuckBody, cow.transform);
+        GameObject[] guides = GameObject.FindGameObjectsWithTag("Guide");
+        foreach (GameObject guide in guides)
+        {
+            MeshRenderer renderer = guide.GetComponent<MeshRenderer>();
+            renderer.enabled = !isTest;
+        }
     }
 }

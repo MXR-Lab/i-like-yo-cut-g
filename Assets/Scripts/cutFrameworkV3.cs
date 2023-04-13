@@ -9,7 +9,6 @@ public class cutFrameworkV3 : MonoBehaviour
     private cutManager cutManager;
     private float sumError;
     public string cutName;
-    //[SerializeField] private GameObject newCut;
     public GameObject cutPart;
 
     void Start()
@@ -28,8 +27,7 @@ public class cutFrameworkV3 : MonoBehaviour
             for (int i = 0; i < crossGates.Length; i++)
                 crossGates[i] = false;
 
-            Debug.Log("Starting");
-            Debug.Log(crossGates.Length);
+            cutManager.setCut(this.gameObject);
             
         }
         else
@@ -45,7 +43,6 @@ public class cutFrameworkV3 : MonoBehaviour
         crossGates[gateIndex] = true;
         if (checkComplete())
         {
-            //cutManager.nextCut();
             cutManager.recordCut(cutName, getAvgError());
             instantiateCut();
         }
@@ -74,18 +71,9 @@ public class cutFrameworkV3 : MonoBehaviour
 
     private void instantiateCut()
     {
-        //Destroy(gameObject);
-        //Instantiate(cutSlice, transform.position, transform.rotation);
         Debug.Log("Split");
-        //Destroy(gameObject);
-        //var mc = gameObject.AddComponent<MeshCollider>();
-        //mc.convex = true;
-        //gameObject.AddComponent<Rigidbody>();
-        //gameObject.AddComponent<Grabbable>();
         cutPart.AddComponent<Rigidbody>();
         cutPart.AddComponent<Grabbable>();
-        //Destroy(gameObject.transform.GetChild(0).gameObject);
-        //newCut.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void Restart(string reason)
