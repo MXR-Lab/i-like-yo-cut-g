@@ -51,9 +51,9 @@ public class cutFrameworkV3 : MonoBehaviour
         crossGates[gateIndex] = true;
         if (checkComplete())
         {
-            instantiateCut();
-            cutManager.recordCut(name, sumError/crossGates.Length);
             //cutManager.nextCut();
+            cutManager.recordCut(name, sumError / crossGates.Length);
+            instantiateCut();
         }
     }
 
@@ -80,15 +80,15 @@ public class cutFrameworkV3 : MonoBehaviour
 
     private void instantiateCut()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
         //Instantiate(cutSlice, transform.position, transform.rotation);
         Debug.Log("Split");
         //Destroy(gameObject);
-        var mc = gameObject.AddComponent<MeshCollider>();
-        mc.convex = true;
-        gameObject.AddComponent<Rigidbody>();
-        gameObject.AddComponent<Grabbable>();
-        Destroy(gameObject.transform.GetChild(0).gameObject);
+        //var mc = gameObject.AddComponent<MeshCollider>();
+        //mc.convex = true;
+        //gameObject.AddComponent<Rigidbody>();
+        //gameObject.AddComponent<Grabbable>();
+        //Destroy(gameObject.transform.GetChild(0).gameObject);
         //newCut.transform.GetChild(0).gameObject.SetActive(true);
     }
 
