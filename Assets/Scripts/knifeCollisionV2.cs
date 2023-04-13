@@ -30,7 +30,7 @@ public class knifeCollisionV2 : MonoBehaviour
                 point = point - cutPoint.transform.position;
 
                 //Debug.Log("x: " + point.x + " y: " + point.y + " z: " + point.z);
-                Debug.Log(Mathf.Sqrt(Mathf.Pow(point.x, 2) + Mathf.Pow(point.x, 2)) * 1000);
+                //Debug.Log(Mathf.Sqrt(Mathf.Pow(point.x, 2) + Mathf.Pow(point.x, 2)) * 1000);
             }
         }
     }
@@ -48,7 +48,7 @@ public class knifeCollisionV2 : MonoBehaviour
 
                 Vector3 point = Physics.ClosestPoint(cutPoint.transform.position, cutManager.getCutLine(), cutManager.getCutLine().transform.position, cutManager.getCutLine().transform.rotation);
                 point = point - cutPoint.transform.position;
-                cutManager.getCut().errorPoint(Mathf.Sqrt(Mathf.Pow(point.x, 2) + Mathf.Pow(point.x, 2)) * 1000);
+                cutManager.getCut().errorPoint(Mathf.Sqrt(Mathf.Pow(point.x, 2) + Mathf.Pow(point.x, 2)) * 100);
             }
             
             if(collision.CompareTag("Border"))

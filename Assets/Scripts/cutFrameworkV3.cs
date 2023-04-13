@@ -8,8 +8,9 @@ public class cutFrameworkV3 : MonoBehaviour
     private bool[] crossGates = new bool[1];
     private cutManager cutManager;
     private float sumError;
-    public string name;
+    public string cutName;
     //[SerializeField] private GameObject newCut;
+    public GameObject cutPart;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class cutFrameworkV3 : MonoBehaviour
                 crossGates[i] = false;
 
             Debug.Log("Starting");
+            Debug.Log(crossGates.Length);
             
         }
         else
@@ -40,19 +42,11 @@ public class cutFrameworkV3 : MonoBehaviour
     public void gatePassed(int gateIndex)
     {
         Debug.Log(gateIndex);
-        if (gateIndex > 0)
-        {
-            if (!crossGates[gateIndex - 1])
-            {
-                Restart("Skipped a gate");
-                return;
-            }
-        }
         crossGates[gateIndex] = true;
         if (checkComplete())
         {
             //cutManager.nextCut();
-            cutManager.recordCut(name, sumError / crossGates.Length);
+            cutManager.recordCut(cutName, getAvgError());
             instantiateCut();
         }
     }
@@ -88,18 +82,23 @@ public class cutFrameworkV3 : MonoBehaviour
         //mc.convex = true;
         //gameObject.AddComponent<Rigidbody>();
         //gameObject.AddComponent<Grabbable>();
+        cutPart.AddComponent<Rigidbody>();
+        cutPart.AddComponent<Grabbable>();
         //Destroy(gameObject.transform.GetChild(0).gameObject);
         //newCut.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void Restart(string reason)
     {
-        sumError = 0;
-        for (int i = 0; i < crossGates.Length; i++)
+        if (!checkComplete())
         {
-            crossGates[i] = false;
+            sumError = 0;
+            for (int i = 0; i < crossGates.Length; i++)
+            {
+                crossGates[i] = false;
+            }
+            Debug.Log(reason);
+            Debug.Log("Try again");
         }
-        Debug.Log(reason);
-        Debug.Log("Try again");
     }
 }
