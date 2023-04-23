@@ -19,8 +19,6 @@ public class hapticFeedback : GrabbableHaptics
     {
         if (collision.gameObject != null)
         {
-            while (collision.CompareTag("Guide")||collision.CompareTag("BestCut"))
-            {
                 input.VibrateController(0.1f, 0.2f, 1f, grab1.HandSide);
                 input.VibrateController(0.1f, 0.2f, 1f, grab2.HandSide);
                 if (collision.CompareTag("Gate"))
@@ -32,9 +30,7 @@ public class hapticFeedback : GrabbableHaptics
                 {
                     input.VibrateController(0.7f, 0.7f, 0.5f, grab1.HandSide);
                     input.VibrateController(0.7f, 0.7f, 0.5f, grab2.HandSide);
-                } 
-            }
-               
+                }
         }
     }
 
